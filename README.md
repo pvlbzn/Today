@@ -19,4 +19,4 @@ First: to __challenge__ myself; second: to keep __motivation__ on a proper level
 
 
 
-
+License for text [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/), license for code MIT
