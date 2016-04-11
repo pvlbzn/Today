@@ -1,6 +1,7 @@
 # Cron running task for project automatization.
 # TODO: Later on I want to add a some project analisys tools here.
 
+import os
 import datetime
 from pathlib import Path
 
@@ -25,4 +26,6 @@ def create_folder(name):
         p.mkdir()
 
 if __name__ == '__main__':
+    abs = os.path.abspath(__file__)
+    os.chdir(os.path.dirname(abs))
     create_folder(get_name())
