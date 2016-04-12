@@ -3,6 +3,9 @@
 from socket import *
 from fib import fib
 
+# Add a threading
+from threading import Thread
+
 def fib_server(address):
     # New TCP IPv4 socket
     sock = socket(AF_INET, SOCK_STREAM)
@@ -18,7 +21,9 @@ def fib_server(address):
         client, addr = sock.accept()
         print("Connection", addr)
         # Pass a socket objet to a handler.
-        fib_handler(client)
+        # fib_handler(client)
+        # Threading version:
+        Thread(target=fib_handler, args=(client,), daemon=True).start()
 
 def fib_handler(client):
     while True:
