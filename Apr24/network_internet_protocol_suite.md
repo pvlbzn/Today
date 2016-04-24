@@ -36,3 +36,7 @@ This cool ascii art shows encapsulation layers.
 4. Link layer
 
 [This](http://www.exa.unicen.edu.ar/catedras/comdat1/material/TP1-Ejercicio5-ingles.pdf) paper explains everything quite well.
+<br>
+--
+UPD:
+Meanwhile I already did some study on ISO/OSI [here](https://github.com/pvlbzn/Today/blob/2dd52be40d27667679ed6379314d1f1cd5ec0f21/Apr5/unix_iso-osi_data_encapsulation.md) in context of sockets.
