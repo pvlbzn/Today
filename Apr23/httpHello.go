@@ -7,8 +7,8 @@ import (
 )
 
 func printInfo(r *http.Request) {
-	fmt.Printf("Client: %s. ", r.UserAgent())
-	fmt.Printf("Method: %s\n", r.Method)
+	fmt.Printf("Client: %s\n", r.UserAgent())
+	fmt.Printf("Method: %s\n\n", r.Method)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
