@@ -80,6 +80,14 @@ len(buffer256)
 
 Most common arrays purpose in Go is to hold storage for a slice.
 
+**UPD (April 27)**:
+
+- Arrays are values. Assign one array to another copies all the elements.
+- If you pass an array to a function, it will receive a cope of the array, not a pointer to it.
+- The size of an array is part of its type.
+
+[10]int in dictinct from [20]int.
+
 ####slices
 >A slice is a data structure describing a contiguous section of an array stored separately from the slice variable itself. A slice is not an array. A slice describes a piece of an array.
 
