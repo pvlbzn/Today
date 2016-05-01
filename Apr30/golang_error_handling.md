@@ -48,5 +48,3 @@ func f(n int) (int, error) {
 }
 ```
 
-
-

@@ -1,0 +1,84 @@
+###Errors
+
+Logical sequel of the [previous](https://github.com/pvlbzn/Today/blob/master/Apr30/golang_error_handling.md) doc on golang's errors.
+
+<br>
+
+####Error handling
+Go uses `error` values to indicate an abnormal state.
+
+```
+f, err := os.Open("file.type")
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+Open a file, if an error occurs call `log.Fatal` to print the error and stop.
+
+<br>
+
+###The error type
+
+The `error` type is an interface. Source code with 10 lines of the [code](https://golang.org/src/errors/errors.go)
+
+```
+type error interface {
+    Error() string
+}
+```
+
+Some use of `errors.New`:
+
+```
+func Sqrt(f float64) (float64, error) {
+    if f < 0 {
+        return 0, errors.New("math: square root of negative number")
+    }
+    // implementation
+}
+```
+
+`fmt` package formats an `error` value by calling its `Error() string` method.
+
+```
+f, err := Sqrt(-1)
+if err != nil {
+    fmt.Println(err)
+}
+```
+
+**NOTE**: *Every route `https://golang.org/pkg/[package]` has a Package files chapter where links on the [package] source are listed.*
+
+You can an information to error:
+
+```
+if f < 0 {
+    return 0, fmt.Errorf("math: square root of negative number %g", f)
+}
+```
+
+Here is implementation of the `Errorf` from `fmt`:
+
+```
+// Errorf formats according to a format specifier and returns the string
+// as a value that satisfies error.
+func Errorf(format string, a ...interface{}) error {
+   return errors.New(Sprintf(format, a...))
+}
+```
+
+<br>
+
+####Error interface
+The `error` interface requires only a `Error` method. Specific error implementations might have additinal methods.
+
+```
+package net
+
+type Error interface {
+    error
+    Timeout() bool   // Is the error a timeout?
+    Temporary() bool // Is the error temporary?
+}
+```
