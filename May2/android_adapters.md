@@ -30,8 +30,8 @@ The key idea is to save memory and gain a performance. If you have a 2^32 items 
 7. lv.setAdapter(adapter);
 ```
 
-**5.**: `ArrayAdapter(Context context, int resource, List<T> objects)` where resource expected to be a TextView instance, at least I got an error while it was a FrameLayout.
-**6.**: Get an ID of `ListView`.
-**7.**: Set `ArrayAdapter` with `al` `ArrayList` on `ListView`.
+**5.**: `ArrayAdapter(Context context, int resource, List<T> objects)` where resource expected to be a TextView instance, at least I got an error while it was a FrameLayout. <br>
+**6.**: Get an ID of `ListView`. <br>
+**7.**: Set `ArrayAdapter` with `al` `ArrayList` on `ListView`. <br>
 
 To be continued.
