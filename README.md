@@ -22,10 +22,10 @@ Generally Im a "self-taught" programmer who learning a theory, multiple programm
 
 ####Structure
 
-'''
+```
     [Month][Day]
     		- [subject]_[topic]
-'''
+```
 
 --
 
