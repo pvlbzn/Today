@@ -35,3 +35,41 @@ There are two stratigies for using Thread:
 - create Thread each time
 - Using an *executor*
 
+-
+
+#### Start
+
+There are two ways to start thread:
+
+- provide a `Runnable` object
+- subclass `Thread`
+
+The `Runnable` interface defines a single method: `run`. The `Thread` class itself implements `Runnable`.
+
+```
+// Runnable obj
+public class PRunnable implements Runnable {
+    
+    public void run() {
+        // Interface implementation
+    }
+
+    public statuc void main(String args[]) {
+        (new Thread(new PRunnable())).start();
+    }
+
+}
+
+// Subclassing
+public class PThread extends Thread {
+    
+    public void run() {
+        // Interface implementation
+    }
+
+    public static void man(String args[]) {
+        (new PThread()).start();
+    }
+
+}
+```
