@@ -73,8 +73,10 @@ iconst_1
 `invokespecial` - invoke instance method. Here this method is a constructor.
 <br>
 `aastore` 		- store into reference array.
+<br>
 `dup`			- duplicate the top operand stack value and push the duplicated value onto the operand stack.
-`iconst_<n>`	- push the int constant <i> onto the operand stack.		
+<br>
+`iconst_<n>`	- push the int constant `<i>` onto the operand stack.		
 
 #### StaticInner
 
