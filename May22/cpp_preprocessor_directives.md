@@ -54,3 +54,36 @@ $ gcc directive.cpp -o direct -lstdc++
 $ ./direct
 > 25
 ```
+
+You can `define` and `undefine` and `define` again.
+
+#### Conditional Inclusions
+`ifdef`, `ifndef`, `if`, `endif`, `else`, `elif`.
+
+`#ifdef` - allows a section to be compiles only if the macro has been defined.
+
+```
+#ifdef
+...
+#endif
+```
+
+`#ifndef` - opposite.
+
+```
+#ifndef
+#define identifier replacement
+#endif
+```
+
+`#if`, `#else`, `#elif` - conditionals
+
+```
+#if MAX_TEMP>50
+#undef MAX_TEMP
+#define MAX_TEMP 50
+
+#else
+#undef MAX_TEMP
+#define MAX_TEMP 25
+```
