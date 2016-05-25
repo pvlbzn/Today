@@ -4,8 +4,6 @@ import argparse
 def parse_args(p):
     args = p.parse_args()
 
-    print(args.square)
-
     if args.version:
         print("argvparser 0.01")
         return 0
