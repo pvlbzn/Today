@@ -27,3 +27,16 @@ An exception object is always an instance of `Throwable`. Sure you can create cu
 ```
 
 `Error` is about Java runtime, dont mess with it.
+
+There are different (many-many) `Exception`s are present. Each exception wrapped in their package. For example `java.io` has `IOException` which derives from `Exception` from `java.lang` package, which, as already said, derives from `Throwable`.
+
+`RuntimeException` almost always means that you did something wrong.
+
+### Checked, Unchecked
+The JLS calls exceptions of the class (and subclasses of course) `Error` and of the class `RuntimeException` as **unchecked exception** All others are **checked exceptions**.
+
+Method which *throws* telling to Java Compiler what it return and what can go wrong. 
+
+```
+
+```
