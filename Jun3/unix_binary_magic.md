@@ -5,7 +5,7 @@
 $ hexdump filename.format > dump.txt
 ```
 
-### Binary as an Image
+#### Binary as an Image
 This thick is simple and impressive. The idea is to represent binary as an image. This task can be achieved using a PGM type.
 
 ```
