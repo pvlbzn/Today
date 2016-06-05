@@ -1,12 +1,18 @@
 ## Magic Number
 It is a constant numerical value used to identify a file format of protocol. [List of signatures](https://en.wikipedia.org/wiki/List_of_file_signatures) of different file formats.
 
+
 #### Portable Network Graphics
 ```
 89 50 4E 47 0D 0A 1A 0A
 ```
 
-After the header comes a series of chunks. Chunk is a fragment of information.
+After the header comes a series of chunks. Chunk is a fragment of information:
+
+```
+Length		Chunk type	Chunk data 			CRC
+4 bytes		4 bytes		Length bytes		4 bytes
+```
 
 
 #### Joint Phorographic Experts Group
@@ -29,3 +35,40 @@ JPEG consists of a sequence of segments, each beginning with a marker, each of w
 0xFF, 0xFE	variable	Text comment
 0xFF, 0xD9	none		End of image
 ```
+
+
+#### Bitmap Image File
+The BPM is capable of storing digital images of arbitary width, height and resolution, optionaly with a data compression, alpha, color profile.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
