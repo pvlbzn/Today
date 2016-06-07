@@ -31,6 +31,9 @@ public double getSalary() {
 
 `super` is not a reference, `super` is a keyword which is directs the compiler to invoke the superclass's method.
 
+##### Overriding Resolution
+OR is a compiler process where the compiler choose a right method from *methods signatures*. Method `foo(int)` has the same name with method `foo(String)`, but the different *method signature*.
+
 #### Constructor
 Subclass constructor can use superclass constructor:
 
@@ -53,3 +56,12 @@ for (Employee empl : arr) {
 ```
 
 It will work because of polymorphism. Each object will return their salary according to overloading features. Automatic selection of an approptiate method at the runtime is called *dynamic binding*.
+
+In Java object variables are polymorphic.
+
+```
+Employee e;
+e = new Pilot();
+```
+
+Superclass type variable can refer to superclass object or to any of subclass objects.
