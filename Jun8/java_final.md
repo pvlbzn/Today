@@ -12,7 +12,7 @@ The `final` keyword can be applied to
 `final` field is final, it can not be changed after initialization.
 
 #### Method
-`final` keyword in method signature means that this method can't be overriden by subclasses. Programmer may declare all methods as `final` unless you have no good reason to want a polymorphism. 
+`final` keyword in method signature means that this method can't be overriden by subclasses. Dynamic binding won't count this method. Programmer may declare all methods as `final` unless you have no good reason to want a polymorphism. 
 
 #### Class
 `final` class can not be subclassed.
