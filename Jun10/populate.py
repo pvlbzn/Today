@@ -25,9 +25,34 @@ def create_table(cursor, db):
     '''
     Create table using SQL sequence.
     '''
-    cursor.execute('''CREATE TABLE film (id INTEGER PRIMARY KEY,
-        asIso INTEGER, developer TEXT, dilution TEXT,
-        film TEXT, 'temperature INTEGER, time INTEGER''')
+    cursor.execute('''CREATE TABLE film (
+        id INTEGER PRIMARY KEY,
+        asIso INTEGER,
+        developer TEXT,
+        dilution TEXT,
+        film TEXT,
+        temperature INTEGER,
+        time INTEGER)''')
+    db.commit()
+
+
+def populate(cursor, db, data):
+    '''
+    Insert data into the database. It works, but there is a better
+    way to do it. First, I don't know why autoincrementing doesn't
+    work as expected. Second, this should be performed using
+    .insertmany() function because of obvious reason.
+    '''
+    i = 1
+    for d in data:
+        t = (i, d["asIso"], d["developer"], d["dilution"], d["film"],
+             d["temperature"], d["time"])
+        cursor.execute(
+            '''INSERT INTO film (id, asIso, developer, dilution, film, temperature, time) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)''', t)
+        i += 1
+    db.commit()
+    print("Data inserted")
 
 
 if __name__ == '__main__':
@@ -43,6 +68,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-d':
         drop_table(cursor, db)
         print('Table dropped')
+        sys.exit(0)
     else:
         # Ugly workaround for test. Create the table
         # if table already exists, do nothing.
@@ -51,6 +77,9 @@ if __name__ == '__main__':
             print('Table created')
         except sqlite3.OperationalError:
             print('Table exists')
+
+    # Populate the data
+    populate(cursor, db, data)
 
     # Close cursor after each operation with a database.
     cursor.close()
