@@ -3,9 +3,8 @@
 
 `SQLite` has a great [documentation](https://www.sqlite.org/docs.html).
 
-#### Is It Like Standard SQL?
-Kind of yes. It implements *most* of SQL-92 standard.
-
+#### Limitations
+It implements *most* of SQL-92 standard. `SQLite` supports an unlimited number of simultaneous readers, but it only allowe one writer at any instant tume.
 #### Create
 
 ```
