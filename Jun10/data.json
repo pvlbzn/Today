@@ -1,0 +1,22 @@
+[{
+    "asIso": 50,
+    "developer": "D-76",
+    "dilution": "1+3",
+    "film": "Adox CHM 125",
+    "temperature": 20,
+    "time": 1020
+}, {
+    "asIso": 50,
+    "developer": "Ilfotec DD",
+    "dilution": "stock",
+    "film": "Legacy Pro 100",
+    "temperature": 24,
+    "time": 510
+}, {
+    "asIso": 800,
+    "developer": "Berspeed",
+    "dilution": "1+1",
+    "film": "HP5+",
+    "temperature": 20,
+    "time": 1020
+}]
