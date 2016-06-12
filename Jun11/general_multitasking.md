@@ -7,3 +7,8 @@ TLDR multitasking is an illusion. CPU core execute only one task at a time. OS f
 It is a process of storing and restoring the state, execution context, of a process or thread so that execution can be resumed from the same point at a later time. This enables multiple processes to share a single CPU.
 
 Context switches are usually computationally intensive. That is why 800 threads is slower than 8.
+
+-
+
+#### Processes and Threads
+Each *process* has a complete set of its own variables, threads share the same data.
