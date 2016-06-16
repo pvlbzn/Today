@@ -78,6 +78,8 @@ Prints:
 public void main.java.com.pvlbzn.Lambda.Overr$2.multiplyTwo(int)
 ```
 
+Thus, the anonymous class implementation object, which were created by the `new` operator, is downcasted (API is narrowed from anonymous object to `a3`) of the original object `a3` of the class `Anonymous` on the assignment operation.
+
 
 ---
 
