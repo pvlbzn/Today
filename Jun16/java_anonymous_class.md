@@ -64,6 +64,21 @@ new Anonymous() {
 }.multiplyTwo(5);
 ```
 
+That means that in `a3` (as a class of the original `Anonumous`) **api** method **`multiplyTwo(int i)`** will not be present, however it will exist.
+
+Using reflection against `a3` proves that actually `a3` object has `multiplyTwo(int i)` method:
+
+```
+System.out.println(a3.getClass().getMethods()[1].toString());
+```
+
+Prints:
+
+```
+public void main.java.com.pvlbzn.Lambda.Overr$2.multiplyTwo(int)
+```
+
+
 ---
 
 #### Decompiler
