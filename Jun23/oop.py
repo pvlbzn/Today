@@ -5,6 +5,10 @@ class Human(object):
     def greet(self):
         print("Greet you. My name is: " + self.name)
 
+    @staticmethod
+    def phylum():
+        return "Chordata"
+
 
 class Engineer(Human):
     def __init__(self, name):
