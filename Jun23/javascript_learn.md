@@ -131,5 +131,21 @@ console.log(l[len + ght])
 
 Example from above actually legit. `l[len+ght]` is the same to `l.lenght`. Oh my.
 
+```
+var object = {
+  isObject: true,
+  "weird field": "yes, it's weird"
+};
+
+console.log(object.isObject);           // true
+console.log(object["weird field"]);     // yes, it's weird
+
+delete object["weird field"];
+
+console.log(object.isObject);           // true
+console.log(object["weird field"]);     // undefined
+
+console.log("isObject" in object);      // true
+```
 
 
