@@ -54,3 +54,5 @@ If interpreter called from root (`.`) then to import the `foo`, import statement
 
 If `foo` imported from the `module` directory, the import statement looks like `from module_1 import foo` because `module_1` is stored in the `module`. Import statement in the `foo`, to import the `bar`, is `from module_2 import bar` because of the previous reason.
 
+#### __init__.py
+These files required to make Python treat the directories as containing packages. The point is again, namespacing. If directories will be automatically threated as packages, directory like os will shadow the python's standard os package.
