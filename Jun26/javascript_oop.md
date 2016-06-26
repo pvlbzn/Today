@@ -135,3 +135,79 @@ for (var i = 0; i < collection.length; i++) {
 	}).call(collection[i], i);
 }
 ```
+
+#### Inheritance
+
+```
+var Person = function(name) {
+	this.name = name;
+};
+
+Person.prototype.walk = function() {
+	console.log("Walk");
+};
+
+Person.prototype.say = function() {
+	console.log("Say");
+};
+
+function Student(name, dep) {
+	Person.call(this, name);
+	this.department = dep;
+}
+
+// Create a Student.prototype object that inherits from Person.prototype
+Student.prototype = Object.create(Person.prototype);
+// Set the constructor property to point to Student
+Student.prototype.constructor = Student;
+
+Student.prototype.say = function() {
+	console.log(this.name, this.department);
+};
+
+Student.prototype.bye = function() {
+	console.log("Bye");
+};
+
+var s1 = new Student("Jaque", "Philosophy");
+s1
+> Student { name: "Jaque", department: "Philosophy" }
+	department: "Philosophy"
+	name: "Jaque"
+	__proto__: Person
+		bye: function ()
+		constructor: Student(name, dep)
+		say: function ()
+		__proto__: Object
+			constructor: function (name)
+			say: function ()
+			walk: function ()
+			__proto__: Object
+				// Standard object properties.
+```
+
+#### `Object.create()`
+
+`Object.create()` method creates a new object with the specified prototype object and properties.
+
+```
+function Shape() {
+	this.x = 0;
+	this.y = 0;
+}
+
+Shape.prototype.move = function (x, y) {
+	this.x += x;
+	this.y += y;
+	console.log("shape moved");
+};
+
+// Subclass
+function Rect() {
+	Shape.call(this);
+}
+
+// Subclass extends super clas
+Rect.prototype = Object.create(Shape.prototype);
+Rect.prototype.constructor = Rect;
+```
