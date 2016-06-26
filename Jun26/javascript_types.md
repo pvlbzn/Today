@@ -38,3 +38,6 @@ String {0: "I", 1: " ", 2: "a", 3: "m", 4: " ", 5: "a", 6: "n", 7: " ", 8: "o", 
 ```
 
 JS automatically converts primitives to `String` objects when `String` methods are used on primitives.
+
+https://developer.mozilla.org/en/docs/Web/JavaScript/Data_structures
+http://www.2ality.com/2011/03/javascript-values-not-everything-is.html

@@ -1,0 +1,94 @@
+#### Prototype-based
+This is an OOP model that doesn't use classes, instead in accomplishes the behavior of any class and then reuses it by decorating existing *prototype* object. This is not most popular OOP model and this is an interesting thing about JS.
+
+#### Namespace
+In JS a namespace is just another object containing methods, properties, objects. Create one global object and all stuff inside will be namespaced.
+
+```
+// If app exists - use this global object, or create a new one
+// which will encapsulate everything.
+var APP = APP || {
+	...
+};
+```
+
+Instead of
+
+```
+function addListener(foo, bar, baz) {
+	// Stuff
+}
+```
+
+Use this approach
+
+```
+APP.event = {
+	addListener: function(foo, bar, baz) {
+		// Stuff
+	}
+	removeListener: function(foo, bar, baz) {
+		// Stuff
+	}
+}
+
+APP.common = {
+	validateName: function(name) {
+		// Validate.
+	}
+	validatePhone: function(phone) {
+		// Validate.
+	}
+}
+
+APP.common.validateName("Jess1ca");
+```
+
+With this approach functions and methods are namespaced and they are free from name collisions.
+
+
+#### Custom Object
+**Every** object in JS on an instance of the `Object`.
+
+```
+// empty Person constructor
+var Person = function () {
+	console.log('instantiated');
+};
+
+var p1 = new Person();
+> "instantiated"
+var p2 = new Person();
+> "instantiated"
+```
+
+Every action declared in the class gets executed at the time of instantiation.
+
+Properties are variables contained in the class. They can be accessed using `namespace.propName` dot notation, or using `this` which points onto namespace.
+
+Methods are functions which follows the properties logic.
+
+```
+var Person = function(name) {
+	this.name = name;
+};
+
+Person.prototype.hey = function() {
+	console.log("Hey, I'm " + this.name);
+};
+
+var p3 = new Person("Eiek");
+p3.hey();
+> "Hey, I'm Eiek"
+
+// Methods are just regular functions, which are objects, so
+var stollenFunc = p3.hey;
+stollenFunc();
+> "Hey, I'm	"			// This part depends on environment
+var name = 'global namespace';
+stollenFunc();
+> "Hey, I'm global namespace"
+```
+
+
+
