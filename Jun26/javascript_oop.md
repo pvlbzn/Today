@@ -88,7 +88,50 @@ stollenFunc();
 var name = 'global namespace';
 stollenFunc();
 > "Hey, I'm global namespace"
+
+stollenFunc.call(p3);
+> "Hey, I'm Eiek"
 ```
 
+#### call()
 
+`stollenFunc.call(p3)` expression is interesting one. From documentation: the `call()` method calls a function with a given `this` value and argumentds provided individually.
 
+`func.call(this, arg1, arg2, ...)`
+
+`call()` is useful for constructor chain.
+
+```
+function Product(name, price) {
+	this.name = name;
+	this.price = price;
+}
+
+// Product called usign call method, which called agaist a Paper
+// object, thus name and price will be set to the Paper object.
+function Paper(name, price) {
+	Product.call(this, name, price);
+	this.category = 'goods';
+}
+
+var a4 = new Paper('A4 paper', 11);
+a4
+> Paper {name: "A4 paper", price: 11, category: "goods"}
+```
+
+Or an another use: invoke an anonymous function
+
+```
+var collection = [
+	{ foo: 'bar', bar: 'baz'};
+]
+
+for (var i = 0; i < collection.length; i++) {
+	(function(i) {
+		this.print = function() {
+			console.log(this.foo, this.bar);
+		};
+		this.print();
+	}).call(collection[i], i);
+}
+```
