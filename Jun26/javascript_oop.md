@@ -93,6 +93,31 @@ stollenFunc.call(p3);
 > "Hey, I'm Eiek"
 ```
 
+#### this
+`this` keyword is **important**. What it actually does:
+
+```
+function User(name) {
+	// this = {};
+	this.name = name;
+	this.say = function() {
+		console.log(name);
+	};
+	// return this;
+}
+
+var u = new User('Kate');
+u.say();
+```
+
+Whats going on, step by step:
+
+1. New empty object created
+2. this gets a pointer to it
+3. Function executes. Object properties accessed by this
+4. this returned
+
+
 #### call()
 
 `stollenFunc.call(p3)` expression is interesting one. From documentation: the `call()` method calls a function with a given `this` value and argumentds provided individually.
