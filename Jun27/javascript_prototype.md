@@ -49,8 +49,110 @@ JS object has one extra attribute - a pointer to another object. This pointer is
 
 Note: there is `__proto__` and `prototype`. First is the actual object that is used in the lookup chain to resolve methods, etc. Second is the object that is used to build `__proto__` whe you create an object with `new`.
 
+```
+var man = Object.create(null);
+defProp(man, 'sex', "male");
 
+var u = Object.create(man);
+defProp(u, 'fname', "Yehuda");
+defProp(u, 'lname', "Katz");
 
+u
+> Object {fname: "Yehuda", lname: "Katz"}
+
+for (prop in u) { console.log(prop); }
+> fname
+> lname
+> sex
+
+u.sex
+> male
+u.fname
+> Yehuda
+u.lname
+> Katz
+
+Object.getPrototypeOf(u);
+> Object {sex: "male"}
+```
+
+#### Seting Props
+The same things from above can be achieved in a simplier way:
+
+```
+var person = Object.create(null);
+person.fullName = function() {
+	return this.fname + ' ' + this.lname;
+};
+var man = Object.create(person);
+man.sex = 'male';
+
+var u = Object.create(man);
+u.fname = "Yehuda";
+u.lname = "Katz";
+
+u.sex;
+> male
+u.fullName()
+> Yehuda Katz
+```
+
+#### Object Literal
+```
+// Literal notation
+var person = {
+	fname: 'Kate',
+	lname: 'Johnson'
+}
+
+// Which is approximate sugar for
+var person = Object.create(Object.prototype);
+person.fname = 'Kate';
+person.lname = 'Johnson';
+```
+
+Object literals always set the newly created objects prototype to an object located at `Object.prototype`. The default `Object.prototype` dictionary comes with a number of the methods, which can later be overriden.
+
+```
+var john = { fname: 'John', lname: 'Swonson'};
+john.toString();
+> "[object Object]"
+
+var john = {
+	fname: 'John',
+	lname: 'Swonson',
+	toString: function() { 
+		return this.fname + " " + this.lname;
+	}
+};
+
+john.toString()
+> "John Swonson"
+```
+
+However literal object syntax can inherit only `Object.prototype`.
+
+## Native OO
+```
+// This is a constructor AND an object ot use as the prototype
+// for new objects.
+var Person = function(fname, lname) {
+	this.fname = fname;
+	this.lname = lname;
+};
+
+Person.prototype = {
+	toString: function() {
+		return this.fname + " " + this.lname;
+	}
+};
+
+var mark = new Person("Mark", "Miller");
+mark.toString();
+> "Mark Miller"
+```
+
+In essence, a JS class is just a function object that serves as a constructor plus an attached prototype objects. 
 
 
 #### Source
