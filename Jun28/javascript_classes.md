@@ -68,5 +68,41 @@ cupObj.__proto__.constructor === Cup;
 This means that Object.prototype object is a last object in inheritance. This is why all objects inherits form the Object (Object in meaning Object.prototype, because Object is a constructor).
 
 
+#### Primitives
+Primitives arent objects. When you call some method against primitive type (like String) primitive tooks a method from `[corresponding object].prototype`, converted to the object, method is executed, object is destroyed.
 
+#### Prototypes
+
+```
+String.prototype.sayHello = function() {
+	console.log('hello friend');
+};
+
+'What?'.sayHello();
+> hello friend
+```
+
+#### Protoclasses
+It is possible to mimic an Object or a Date objects.
+
+```
+function Animal(spec) {
+	this.spec = spec;
+	this.speed = 0;
+}
+
+Animal.prototype.run = function(speed) {
+	this.speed += speed;
+}
+
+Animal.prototype.stop = function() {
+	this.speed = 0;
+}
+
+var a = new Animal('Cat');
+a.run(15);
+a.stop();
+```
+
+The difference between assigning methods in constructor is that `spec` and `speed` will be stored in `a`, but `run` and `stop` will be stored in prototype. There is obvious plus for performance, and minus for some flexibility such as different lexical scope with a constructor.
 
