@@ -7,3 +7,7 @@ def run():
     print(__name__)
     print(os.path.curdir)
     bar.run()
+
+
+if __name__ == '__main__':
+    run()
