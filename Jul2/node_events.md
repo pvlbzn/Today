@@ -25,9 +25,23 @@ const EventEmitter = require('events').EventEmitter;
 
 // Different 
 function Emitter() {
-    EventEmitter
+    EventEmitter.call(this);
 }
+
+util.inherits(Emitter, EventEmitter);
+
+Emitter.prototype.do = function do() {
+    console.log('1');
+    emitter.emit('someEvent');
+    console.log('3');
+};
+
+var ee = new Emitter();
+ee.on('someEvent', function() {
+    console.log('2');
+});
+
+ee.do();
 ```
 
-morning: https://nodesource.com/blog/understanding-the-nodejs-event-loop/
-         https://nodejs.org/docs/latest/api/util.html#util_util_inherits_constructor_superconstructor
+A small deviation on `util` module. [`util`](https://nodejs.org/docs/latest/api/util.html) module is designed to support the needs of node own internal API. In code above used function `util.inherits(constructor, superConstructor)`, note that this function is **discouraged**, instead `class` and `extends` must be used. This function will set the prototype of `constructor` to a new object created from `superConstructor`.
