@@ -29,20 +29,65 @@ ee.do();
 
 const EventEmitter = require('events').EventEmitter;
 
-class Em extends EventEmitter {
-    constructor() {
-        super();
+const sync = () => {
+    class Em extends EventEmitter {
+        constructor() {
+            super();
+        }
+        do() {
+            console.log('1');
+            this.emit('someEvent');
+            console.log('3');
+        }
     }
-    do() {
-        console.log('1');
-        this.emit('someEvent');
-        console.log('3');
-    }
+
+    const ee = new Em();
+    ee.on('someEvent', () => {
+        console.log('2');
+    });
+    return ee;
+};
+
+// s = sync();
+// s.do();
+
+/*
+ * Next example
+ */
+
+var util = require('util');
+
+/*
+function MyThing() {  
+  EventEmitter.call(this);
+
+  doFirstThing();
+  // Wont happen because MyThing must finish instantiating
+  // before listening for any events. It can be fixed with
+  // setImmediate.
+  this.emit('thing1');
+}
+*/
+
+function MyThing() {
+    EventEmitter.call(this);
+
+    doFirstThing();
+    setImmediate(emitThing, this);
 }
 
-const ee = new Em();
-ee.on('someEvent', () => {
-    console.log('2');
-})
+function emitThing(that) {
+    that.emit('thing1');
+}
 
-ee.do();
+function doFirstThing() {
+    console.log('First');
+}
+
+util.inherits(MyThing, EventEmitter);
+
+var mt = new MyThing();
+
+mt.on('thing1', function onThing1() {  
+  console.log('Yes!');
+});

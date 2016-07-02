@@ -20,28 +20,30 @@ ee.emit('test');
 
 `EventEmitter` API is entirely synchronous
 
-```
-const EventEmitter = require('events').EventEmitter;
+See runnable code `./ee.js`
 
-// Different 
-function Emitter() {
-    EventEmitter.call(this);
+```
+class Em extends EventEmitter {
+    constructor() {
+        super();
+    }
+    do() {
+        console.log('1');
+        this.emit('call');
+        console.log('3');
+    }
 }
 
-util.inherits(Emitter, EventEmitter);
-
-Emitter.prototype.do = function do() {
-    console.log('1');
-    emitter.emit('someEvent');
-    console.log('3');
-};
-
-var ee = new Emitter();
-ee.on('someEvent', function() {
+const ee = new Em();
+// Attach callback to the 'call' event. When 'call' will happen
+// 2 will be printed.
+ee.on('call', () => {
     console.log('2');
-});
+})
 
 ee.do();
 ```
 
-A small deviation on `util` module. [`util`](https://nodejs.org/docs/latest/api/util.html) module is designed to support the needs of node own internal API. In code above used function `util.inherits(constructor, superConstructor)`, note that this function is **discouraged**, instead `class` and `extends` must be used. This function will set the prototype of `constructor` to a new object created from `superConstructor`.
+It will produce 1, 2, 3. This is the synchronous code. `.on` just attached a callback to the event. Basicaly it means just call this function later when this event will occur.
+
+`EventEmitter` often appears async because it is regularly **used to signal the completion of async ops**, but the `EventEmitter` API is synchronous.
