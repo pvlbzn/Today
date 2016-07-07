@@ -30,4 +30,4 @@ Run with `[1, 1]` will produce `0.08749120464462963`. Without knowing much about
 Stuff from line 4 to 8 is a learning data. Data is already normalized by its nature.
 
 ## Handwritten numbers recognition
-[MNIST](http://yann.lecun.com/exdb/mnist/) library will be used. 
+[MNIST](http://yann.lecun.com/exdb/mnist/) library will be used. Code look at `./train.js` and `./reco.js`. 
