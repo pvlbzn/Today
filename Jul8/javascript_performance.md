@@ -28,3 +28,20 @@ The `timer-events.png` from `./perf.js`:
 
 ![perf.js](https://github.com/pvlbzn/Today/blob/master/Jul8/timer-events.png "Plotted Performance")
 
+
+#### Node
+Much easier way to achieve the same result is to run `node --prof` against desired script. All commands are hanging out in `node --v8-options`. It will output `n-v8.log` file, which is can be uploaded into `chrome://tracing` page. There is also an option to achieve the same as `linux-tick-proccessor` using `node --prof-process`, however on my configuration this option is missig, but it should be here.
+
+#### Optimizations
+Well, it looks like that almost all *v8 can not optimize 1, 2 and 3* is legacy things. Almost every example 'how to kill performance' does nothing to performance. I found general suggestions:
+
+- Be close to static-like typing
+- Be monomorphic
+
+However:
+
+- Readability counts
+- Idiomatic code is better
+
+#### Conclusion
+There is no single recepie to be 'performant'. First of all - profile. Second - analyze complexity of your algorithms, they most likely will win more than 15ms in 1e10 loop.
