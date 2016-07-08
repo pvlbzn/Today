@@ -26,4 +26,5 @@ This code will generate (gnuplot is required) `timer-events.png` in the current 
 
 The `timer-events.png` from `./perf.js`:
 
+![perf.js](https://github.com/pvlbzn/Today/blob/master/Jul8/timer-events.png "Plotted Performance")
 
