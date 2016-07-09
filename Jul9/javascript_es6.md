@@ -294,5 +294,17 @@ user.fullName = 'Martin Lorenzo';
 > Martin Lorenzo
 ```
 
+#### `static`
+
+```
+class User {
+    // constructor
+    static createGuest() {
+        return new User("guest", "unknown");
+    }
+};
+```
 
 
+## Credits
+Code samples and info from [this](https://learn.javascript.ru/) beautiful source.
