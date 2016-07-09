@@ -161,4 +161,138 @@ Object.is(+0, -0);      // false
 Object.is(NaN, NaN);    // true
 ```
 
+#### Methods
+
+```
+let b = 15;
+let a = {
+    b,
+    returnB() {
+        return b;
+    }
+};
+
+a.returnB;
+```
+
+#### `super`
+
+`super` works through prototype. It is not really about `class`es. `super` works with `[[HomeObject]]`. Only one exception - `() => {}` function has one scope level up `super`. 
+
+```
+let animal = {
+    walk() {
+        console.log("walk");
+    }
+};
+
+let rabbit = {
+    __proto__: animal,
+    // Right
+    walk() {
+        super.walk();
+    }
+
+    // No way.
+    // walk: function() {
+    //      super.wal();
+    // }
+    
+    // Ok
+    // walk() {
+    //      setTimeout(() => super.walk());
+    // }
+};
+
+rabbit.walk();
+```
+
+`[[HomeObject]]` is kinda immutable. Method is binded to his object for ever.
+
+```
+let walk = rabbit.walk();
+walk();
+// Will print
+"walk"
+```
+
+Because of `walk` point to its object, `[[HomeObject]]`.
+
+
+## Class
+
+It is a syntax update, nothing new techically.
+
+```
+class ClassName [extends ParentName] {
+    constructor
+    methods
+}
+```
+
+```
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    greet() {
+        console.log('Hi ${this.name}');
+    }
+}
+
+// This is ± is an equolent to the following
+function User(name) {
+    this.name = name;
+}
+
+User.prototype.greet = function() {
+    console.log('Hi ' + this.name);
+};
+```
+
+Function `constrcutor` triggers when called using `new`. Methods are recorded into User.prototype.
+
+However, new and old syntax has some differences. `User` from class can not be called without `new`. `class` like a `let` in case of a scope, it is visible inside a block and in child blocks.
+
+Methods from `class` have traits. Method `greet` has an access to the `super`. All methods work in `use strict`. All methods arent enumerable (they will be absent in for..in).
+
+#### Class Expression
+
+Like a functions, classes can be inlined.
+
+```
+let User = class [Name] {
+    greet() { console.log('Hey'); }
+};
+```
+
+#### `get` and `set`
+
+```
+class User {
+    constructor(fname, lname) {
+        this.fname = fname;
+        this.lname = lname;
+    }
+
+    get fullName() {
+        return '${this.fname} ${this.lname}';
+    }
+
+    set fullName(n) {
+        [this.fname, this.lname] = n.split(' ');
+    }
+};
+
+// Note syntax of the get/set. No function call.
+
+const user = new User('Jack', 'Blake');
+user.fullName;
+> Jack Blake
+user.fullName = 'Martin Lorenzo';
+> Martin Lorenzo
+```
+
+
 
