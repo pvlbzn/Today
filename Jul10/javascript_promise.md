@@ -1,6 +1,6 @@
 ## [Promise](https://github.com/v8/v8/blob/c7eb436d09d5fa10ef41a3312edea2d7a2680126/src/js/promise.js)
 
-Promise is a special object, which contains a *state*. First promise pending, when promise is fulfilled (success) or rejected (error).
+Promise is a special object, which contains a *state*. First promise pending, when promise is fulfilled (success) or rejected (error). Promise [spec](http://www.ecma-international.org/ecma-262/6.0/index.html#sec-promise-objects).
 
 ```
                 +-----------+
@@ -51,6 +51,40 @@ promise.then(
 ```
 
 Promise is kind of one use only. It can not change its mind. If promise is *resolve* than it is for ever. So, only one state.
+
+#### In Depth
+`new Promise(executor)` has 4 properties
+
+- PromiseState *state on pending*
+- PromiseResult *result*
+- PromiseFulfillReactions *list of the functions*
+- PromiseRejectReactions *list of the functions*
+
+```
+new Promise(executor)
+    PromiseState:               "pending"
+    PromiseResult:              undefined
+    PromiseFulfillReactions:    []
+    PromiseRejectReactions:     []
+```
+
+```
+const promise = new Promise((res, rej) => res(1));
+promise.then((res) => { console.log(res); return 'listener 1' });
+promise.then((res) => { console.log(res); return 'listener 2' });
+
+> 1
+> 1
+> Promise {[[PromiseStatus]]: "resolved", [[PromiseValue]]: "listener 2"}
+
+promise.then((res) => { console.log(res); return 'listener 1'; })
+       .then((res) => { console.log(res); return 'listener 2'; });
+
+> 1
+> listener 1
+> Promise {[[PromiseStatus]]: "resolved", [[PromiseValue]]: "listener 2"}
+```
+
 
 #### Promissify
 
@@ -105,11 +139,25 @@ httpGet('/user/id')
         img.src = githubUser.avatar_url;
         img.className = "promise";
         document.body.appendChild(img);
-
-        setTimeout(() => img.remove(), 3000);
+        
+        // setTimeout(() => img.remove(), 3000);
+        
 });
 ```
 
 Every following .then chain got a result from a previous .then chain. If previous promise returns promise then *result* will be passed, not a promise.
 
+#### Errors
+On error, encountered error goes into the closest `onReject`. 
 
+```
+httpGet()
+    .then()
+    .then()
+    .then()
+    .catch(err -> {
+        console.log(err);
+    });
+```
+
+If error somewhat critical it thowed and catched. That behaviour is similar to try..catch.

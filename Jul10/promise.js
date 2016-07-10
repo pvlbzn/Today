@@ -1,6 +1,6 @@
 // Trying out promises
 
-const p = new Promise((res, rej) => {
+const promise = new Promise((res, rej) => {
     setTimeout(() => {
         console.log('promise');
         res('15');
@@ -8,11 +8,18 @@ const p = new Promise((res, rej) => {
 });
 
 
-p.then(
-    res => {
-        console.log('success: ' + res);
-    },
-    err => {
-        console.log('fail');
-    }
-);
+promise
+    .then(
+        res => {
+            console.log('success: ' + res);
+            return res;
+        },
+        err => {
+            console.log('fail');
+        }
+    )
+    .then(
+        res => {
+            console.log('Second then: ' + res);
+        }
+    );
