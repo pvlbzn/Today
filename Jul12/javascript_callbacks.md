@@ -45,3 +45,5 @@ fs.readFile('/file.postfix', (err, data) {
 - Event Emitter
 - Stream
 - Generator
+
+- caolan/async
