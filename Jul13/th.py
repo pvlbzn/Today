@@ -33,16 +33,17 @@ def fetch(n):
     result = pool.map(urllib.request.urlopen, urls)
     # Close and wait until its done.
     pool.close()
-    pool.join()
+    # pool.join()
+    print(result)
     stop(time.time())
 
 
 if __name__ == '__main__':
-    fetch(1)
+    # fetch(1)
     # running 1 threads
     # 10.70187783241272
 
-    fetch(8)
+    # fetch(8)
     # running 8 threads
     # 1.7693541049957275
 
@@ -50,11 +51,11 @@ if __name__ == '__main__':
     # running 32 threads
     # 0.7312910556793213
 
-    fetch(128)
+    # fetch(128)
     # running 128 threads
     # 0.6293540000915527
 
-    fetch(512)
+    # fetch(512)
     # running 512 threads
     # 0.9796891212463379
     # The more things to do, the more benefit will be from
