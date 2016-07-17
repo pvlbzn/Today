@@ -35,7 +35,7 @@ The kernel gives for each program a separate process inside which program will b
 **standard output** - file descriptor 1
 **standard error** - file descriptor 2
 
-File descriptors are **process specific**. Imagine all programs with one `stderr`.
+File descriptors are **process specific**. Imagine all programs with one `stderr`. 
 
 ### `bash`
-
+{@see ./bsh.bash}
