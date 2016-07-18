@@ -7,7 +7,7 @@ Bash is the GNU project shell. It is 'better' version of `sh`. It is available o
 
 Because a computer terminal is an electronic hardware device that is used for entering data into and displaying data from a computer.
 
-![this](https://en.wikipedia.org/wiki/File:DEC_VT100_terminal.jpg "terminal")
+![Hardware Terminal](https://en.wikipedia.org/wiki/File:DEC_VT100_terminal.jpg "terminal")
 
 Typical terminal works like this
 
