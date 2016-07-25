@@ -46,3 +46,21 @@ exec.submit(() -> {
 ```
 
 This code will print `hello pool-1-thread-1`. `Executors` class, as can be read from its name, provides a factory methods for creating various kinds of executor service.
+
+Executors must be stopped explicitly
+
+```
+try {
+    exec.shutdown();
+    exec.awaitTermination(5, TimeUnit.SECONDS);
+}
+catch (InterruptedException e) {
+    System.err.println("task interrupted");
+}
+finally {
+    if (!exec.isTerminated())
+        System.out.println("task will be canceled");
+    exec.shutdownNow();
+    System.out.println("shutdown");
+}
+```
