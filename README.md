@@ -1,35 +1,30 @@
-###Today I learned.
-
-####What
-One year long project. Every day I will make a note of the computer science, programming things which I learned today. 
+## Today I Learned.
 
 
-####How
-Generally, documents will be about a particular topic, which usually will be represented in its name, however, it isn't possible for every case, since the  main purpose is to learn and reflect, not to create trustworthy source of an information.
+### What
+One year long, a self challenging and a motivating project. Every day I will learn a concept or a technology which is related to Applied Computer Science, Software Engineering or just a plain Computer Science.
+
+This is an updated version of the `README.md` file. Since the beggining of the project the main concept was slightly changed. Initially each day I was planning to record stuff which I learned at this day. However, as a time shows, it is not possible to be productive if you are trying to record and learn at once, especially if there are 10-15-30 things in a day.
+
+Today concept sounds more like: "*Today I learned for 'Today I Learned'*." Weird, but **it works**. At least last 100 days this was a case.
 
 
-####Why
-
-To:
-
-- Keep track of my research and study
-- Never research one thing twice
-- Never lose a material
-- In case of forgotten topic: refresh it ASAP
-
-Generally Im a "self-taught" programmer who learning a theory, multiple programming languages, technologies at once and it isn't rare thing when I just forget how to implement something, or a some things in details.
+### Structure
+Every day owns its directory, which is named is `[Month][Day]` fashion. Each document has a [[field]_[description]] naming convention.
 
 
-####Structure
+### Update
+
+**31 July 2016**:
 
 ```
-    [Month][Day]
-    		- [subject]_[topic]
+# count.bash
+days: 		    126
+done: 	    	34.52%
+
+.md files:  	261
+.md words:	    43991
+
+avg per .md:	168
+avg per day:	349
 ```
-
---
-
-UPD: 36th day of the my implementation of the TIL
-This project is much more rewarding and meaningful then I though before.
-
-
