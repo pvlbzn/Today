@@ -6,10 +6,9 @@
 #
 NDAY=$( ls -ld */ | wc -l )
 DONE=$(( ${NDAY}+1-1 ))
-echo -e "done ${DONE}"
 PERCENT=$( bc <<< "scale=2; "$DONE" / 3.65" )
 
-echo -e "days:\t\t${NDAY}"
+echo -e "days: \t\t${NDAY:5}"
 echo -e "done: \t\t${PERCENT}%\n"
 
 
@@ -22,8 +21,8 @@ MDFILES=$( echo */* | grep .md | wc -w )
 # which should be cut for calculations.
 WORDS=$( cat */*.md | wc -w )
 
-echo -e ".md files:\t${MDFILES}"
-echo -e ".md words:\t${WORDS}\n"
+echo -e ".md files:\t${MDFILES:5}"
+echo -e ".md words:\t${WORDS:3}\n"
 
 
 #
