@@ -5,11 +5,12 @@
 # Information about number of days and how much already done.
 #
 NDAY=$( ls -ld */ | wc -l )
-DONE=$( (( ${NDAY:5}+1-1 )) )
+DONE=$(( ${NDAY}+1-1 ))
+echo -e "done ${DONE}"
 PERCENT=$( bc <<< "scale=2; "$DONE" / 3.65" )
 
-echo -e "days:\t\t${NDAY:5}"
-echo -e "done: \t\t$PERCENT%\n"
+echo -e "days:\t\t${NDAY}"
+echo -e "done: \t\t${PERCENT}%\n"
 
 
 #
@@ -21,16 +22,16 @@ MDFILES=$( echo */* | grep .md | wc -w )
 # which should be cut for calculations.
 WORDS=$( cat */*.md | wc -w )
 
-echo -e ".md files:\t${MDFILES:5}"
-echo -e ".md words:\t${WORDS:3}\n"
+echo -e ".md files:\t${MDFILES}"
+echo -e ".md words:\t${WORDS}\n"
 
 
 #
 # Information about averanges. Averange words per each .md file
 # and averange number of words per day.
 #
-AVGWORDS=$( (( ${WORDS:3} / ${MDFILES:5} )) )
-AVGPERDAY=$( (( ${WORDS:3} / ${NDAY:5} )) )
+AVGWORDS=$(( ${WORDS} / ${MDFILES} ))
+AVGPERDAY=$(( ${WORDS} / ${NDAY} ))
 
 echo -e "avg per .md:\t${AVGWORDS}"
 echo -e "avg per day:\t${AVGPERDAY}"
