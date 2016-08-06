@@ -50,3 +50,50 @@ class Child extends Parent {
 
 `original` method call on instance of the `Parent` class will print `1` while call on instance of the `Child` class will print both `1` and `2`.
 
+#### Parametric Polymorphism
+Parametric Polymorphism is a way to make a language more expressive while still maintaining full static type safety. Using parametric polymorphism, a function or a data type can be written generically so that it can handle values identically without depending on their type. Such functions and data types are called *generic functions* and *generic datatypes* and form the basis of *generic programming*.
+
+#### Subtype
+
+```
+class Figure {
+    public void draw() {
+        System.out.println("Figure");
+    }
+}
+
+class Circle extends Figure {
+    @Override
+    public void draw() {
+        System.out.println("Circle");
+    }
+}
+
+class Rectangle extends Figure {
+    @Override
+    public void draw() {
+        System.out.println("Rectangle");
+    }
+}
+```
+
+Instantiate
+
+```
+Figure f = new Figure();
+Circle c = new Circle();
+Rectangle r = new Rectangle();
+Figure[] figs = {f, c, r};
+
+for (int i = 0; i < figs.length; i++) {
+    figs[i].draw();
+}
+```
+
+Will print
+
+```
+Figure
+Circle
+Rectangle
+```
