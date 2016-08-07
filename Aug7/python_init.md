@@ -39,4 +39,15 @@ from package.module1 import SomeClass
 from package import SomeClass
 ```
 
+`__init__.py` executes when package is imported:
+
+```
+# __init__.py
+print('hello')
+
+# import package
+import package_with_init
+> 'hello'
+```
+
 The reason to use package level import is that it can serve as a public API. User can take a look into `__init__.py` and understand what classes or functions are *designed* to be used. There are no private classes, methods, fields in Python, because Python community assumes that *we are all adults here* and if you want to use kind of private API it is your business.
