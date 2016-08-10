@@ -20,7 +20,7 @@ Accept: */*
 ```
 
 
-#### 
+#### POST
 By design, the POST request method requests that a web server accepts and stores the data enclosed in the body of the request message.
 
 There are 4 options how to POST data: form-data, x-www-form-urlencoded, raw, binary.
@@ -67,5 +67,29 @@ third_#$%^&*()
 ------WebKitFormBoundary0CDyln1uDJBESJOr--
 ```
 
-Values arrived correctly in sense of 1 byte as 1 byte. However there are a lot of header files inside.
+Values arrived correctly in sense of 1 byte as 1 byte. However there are a lot of header files inside which will outweight profit from non encoded data.
 
+
+#### `application/json`
+There is an option to build this communication using JSON.
+
+```
+POST / HTTP/1.1
+Host: localhost:25000
+User-Agent: curl/7.43.0
+Accept: */*
+Content-Type: application/json
+Content-Length: 20
+
+{"name":"user_name"}
+```
+
+For example:
+
+```
+POST /auth?username=uname
+
+{
+    "value": "user_password"
+}
+```
