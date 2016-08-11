@@ -26,3 +26,30 @@ func GetSample() []Sample {
 }
 ```
 
+
+#### Dealing with JSON serialization
+Well, `sql.NullType` solves problem with null handeling, but not with serialization. Serialized null type will produce data structure like:
+
+```
+"date_closed":{"String":"","Valid":false}
+```
+
+which is not ok.
+
+Solution is to create a custom type and implement `json.Marshaler` interface on it.
+
+```
+type JsonNullString struct {
+    sql.NullString
+}
+
+func (v JsonNullString) MarshalJSON() ([]byte, error) {
+    if v.Valid {
+        return json.Marshal(v.String)
+    }
+    return json.Marshal(nil)
+}
+```
+
+So, instead of using `sql.NullString` this custom type may be used for proper JSON rendering.
+
