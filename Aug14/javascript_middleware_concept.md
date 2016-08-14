@@ -30,7 +30,43 @@ app.use('/what/ever/path', [middleware], [middleware]);
 There can be more than one handler for a unique path:
 
 ```
+// next('route') work with middleware loaded using app.METHOD or router.METHOD
 app.get('/some/path/:uname', (req, res, next) => {
-    if (req.params.uname == 'whoever') next('route');
+    if (req.params.uname == 'whoever')
+        next('route');
     else next();
+}, (req, res, next) => {
+    res.render('normal');
+});
+
+app.get('/some/path/:uname', (req, res, next) => {
+    res.render('special');
+});
 ```
+
+
+#### Router Level Middleware
+Router level middleware works similarly with app level but it is bound to an insance of `Router()`. Here is an example of the same functionality:
+
+```
+const app = express();
+const router = express.Router();
+
+// Executed for every single request
+router.use((req, res, next) => {
+    console.log('router middleware');
+    next();
+});
+
+router.use('/some/path/:uname', (req, res, next) => {
+    // First call
+    next();
+}, (req, res, next) => {
+    // Second one
+    next();
+});
+
+// Do whatever else and mount the router on the app
+app.use('/', router);
+```
+
