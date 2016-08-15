@@ -70,3 +70,27 @@ router.use('/some/path/:uname', (req, res, next) => {
 app.use('/', router);
 ```
 
+
+#### Error-handling Middleware
+It takes **four** arguments thus express resolves this function as a error-handling middleware by its signature.
+
+```
+app.use((err, req, res, next) => {
+    console.log(err.stack);
+    res.status(500).send('see console log');
+});
+```
+
+
+#### Built-in Middleware
+Express by itself has only one built-in function `static`, and its based on [serve-static](https://github.com/expressjs/serve-static?_ga=1.211798293.1024317270.1470639148). However express previously had more dependencies and functionality, now they are [here](https://github.com/senchalabs/connect#middleware).
+
+Function signature is: `express.static(root, [options])` where `root` is an argument specifies the root directory from which to serve static assets.
+Use docs to see what kind of options can be.
+
+Application can use more than one static directory.
+
+
+#### Third-party Middleware
+Well, it is a middleware from third-party. Express maintains the [list](https://expressjs.com/en/resources/middleware.html) of most widely used middleware and it is good place to consult.
+
