@@ -77,3 +77,10 @@ In order to make one thread stop and wait for another thread to finish use
 `int pthread_join(pthread_t thread, void **value_ptr)`
 
 Where thread is an id to pick which thread to wait for and `**` parameter to capture the return value. Unjoined threads are called `zombies`.
+
+
+## Performance
+Spawning a thousands of threads with a short life time is expensive. A common pattern which is used to reduce this cost is a *thread pool*. At a startup an application will spawn a number of threads and supply them on demand. When the thread task completes, the thread returns to the pool for reuse later.
+
+Each thread also gets its own stack, therefore consumes a memory.
+

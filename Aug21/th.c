@@ -13,7 +13,7 @@ void *thFunc(void *arg) {
 
     while (i < 10) {
         usleep(1);
-        printf("thFunc: %s\n", str);
+        printf("thFunc: %s %d\n", str, i);
         i++;
     }
     
@@ -26,12 +26,12 @@ int main(void) {
 
     int i = 0;
 
-    pthread_create(&pth, NULL, thFunc, "creating a thread");
+    pthread_create(&pth, NULL, thFunc, "thread msg");
     pthread_join(pth, NULL);
 
     while (i < 10) {
         usleep(1);
-        printf("main() running");
+        printf("main() running\n");
         i++;
     }
     
