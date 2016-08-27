@@ -15,7 +15,7 @@ class Vector:
         '''
         String representation
         '''
-        return 'Vector(%r, %r)' % (self.x, self.y)
+        return 'Vector({0}, {1})'.format(self.x, self.y)
 
     def __abs__(self):
         '''
