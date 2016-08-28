@@ -8,6 +8,7 @@ Usually the special methods are invoked implicitly. `item in arr` actually calls
 In general pythonistas should implement special methods more often than invoking them explicitly. Advantage of calling built-in function, like `len` instead of `obj.__len__()` is performance and a common sense.
 
 ## Magic Methods
+There are 83 special methods.
 !{'oo.py'}
 
 #### `__repr__`
@@ -16,4 +17,19 @@ In general pythonistas should implement special methods more often than invoking
 #### Operator Overloading
 A new object on return is expected.
 
+#### Boolean
+Instances of user defined classes are considered to be *truthy* until `__bool__` or `__len__` is implemented. For example custom class `Score`
 
+```
+class Score(object):
+    def __init__(self, score):
+        self.score = score
+
+# Instance of the Score with a negative score
+s = Score(-15)
+
+if s:
+    print('s is truthy')
+
+'s is truthy'            # but it isn't
+```
