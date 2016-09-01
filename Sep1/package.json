@@ -1,0 +1,15 @@
+{
+  "name": "npm-func-test",
+  "version": "0.0.1",
+  "main": "noscript.js",
+  "scripts": {
+    "prestart": "echo prestart",
+    "start": "echo start",
+    "poststart": "echo poststart",
+
+    "precustom-script": "echo precustom-script",
+    "custom-script": "echo custom-script"
+  },
+  "author": "pvlbzn",
+  "license": "UNLICENSED"
+}
