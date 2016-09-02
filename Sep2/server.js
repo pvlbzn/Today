@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
                 <a href="#" id="link1">link 1</a>
                 <a href="#" id="link2">link 2</a>
                 <a href="#" id="link3">link 3</a>
+                <a href="#" id="link4">link 4</a>
                 <script>
                     
                     /**
@@ -91,6 +92,25 @@ app.get('/', (req, res) => {
 
                         $.get('/ajax', res => {
                             console.log(res);
+                        });
+                    });
+
+                    /**
+                     * Link 4 ajax call event
+                     */
+                    const l4 = $('#link4');
+                    l4.click(event => {
+                        event.preventDefault();
+                        console.log('link 4 clicked');
+
+                        $.get('/ajax', res => {
+                            console.log(res);
+                        })
+                        .then(success => {
+                            console.log('success: ' + success);
+                        },
+                        fail => {
+                            console.log('fail: ' + fail);
                         });
                     });
                 </script>
