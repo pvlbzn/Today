@@ -67,3 +67,16 @@ function reduce(data, typeResolution, fn) {
 ```
 
 `typeResolution` is a naive hack for easier implementation.
+
+
+## Performance
+I was curious about the difference between custom vs native implementations. It seems to be native is ≈2 times faster. See `./perf.js`.
+
+```
+// Custom implementation
+10615721868.343948 [ 0, 873440724 ]
+// Native implementation
+10615721868.343948 [ 0, 458421087 ]
+// native - custom = diff
+time diff: -415019637
+```

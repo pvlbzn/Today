@@ -42,13 +42,19 @@ function reduce(data, typeResolution, fn) {
 
 
 // Dataset
-const x = [1, 2, 3, 4, 5];
+// const x = [1, 2, 3, 4, 5];
 
 // Even filter example
-console.log(filter(x, n => { return n % 2 === 0; }));
+// console.log(filter(x, n => { return n % 2 === 0; }));
 
 // Add 25% example
-console.log(map(x, n => { return n + ((n / 100) * 25) }));
+// console.log(map(x, n => { return n + ((n / 100) * 25) }));
 
 // Sum all data
-console.log(reduce(x, 0, (n1, n2) => { return n1 + n2 }));
+// console.log(reduce(x, 0, (n1, n2) => { return n1 + n2 }));
+
+module.exports = {
+  filter: filter,
+  map: map,
+  reduce: reduce
+};
