@@ -36,3 +36,30 @@ x.should.have.length(5);
 ```
 
 `expect` interface provides a function as a starting point for chaining lang assertions. `should` interface extends `Object.prototype` to provide a single getter as the starting point of lang assertions.
+
+# Testing Framework
+By itself `chai` is an assertion library. It can not used properly without a some kind of testing framework. Most popular bundle is `mocha` together with `chai`. `mocha` is a testing framework:
+
+```
+const x = 'hello';
+
+describe('x test description', () => {
+    it('expect to be a string type', () => {
+        expect(x).to.be.a('string');
+    });
+    it('expect to have a length of 5', () => {
+        expect(x).to.have.length(5);
+    })
+})
+```
+
+Run test using `mocha ex.js`
+
+```
+  x test description
+    ✓ expect to be a string type
+    ✓ expect to have a length of 5
+
+
+  2 passing (12ms)
+```
