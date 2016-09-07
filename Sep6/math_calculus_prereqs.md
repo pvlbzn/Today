@@ -14,8 +14,11 @@ In order to understand and have some success with Calculus a good algebra and tr
 Many of the problems in calculus will involve *finding the roots of a function* and for the most part that means *factoring* (not only ***polynomial factoring*** but also factoring with ***rational exponents***).
 
 ![factoring expression](https://latex.codecogs.com/gif.latex?5x^{2}(2x-3)^{1/3}&plus;8x(2x-3)^{-2/3}(3x&plus;2)^{3/2} "factoring expression")
+
 ![factoring expression](https://latex.codecogs.com/gif.latex?x(2x-3)^{-2/3}(3x&plus;2)^{1/2}[5x(2x-3)&plus;8(3x&plus;2] "factoring expression")
+
 ![factoring expression](https://latex.codecogs.com/gif.latex?x(2x-3)^{-2/3}(3x&plus;2)^{1/2}[10x^{2}-15x&plus;24x&plus;16] "factoring expression")
+
 ![factoring expression](https://latex.codecogs.com/gif.latex?x(2x-3)^{-2/3}(3x&plus;2)^{1/2}[10x^{2}&plus;9x&plus;16] "factoring expression")
 
 #### Completing the Square
